@@ -7,6 +7,7 @@ class AlgebraSolver:
         self.tokens = []
         self.x_val = 0
         self.this_string_to_int = ""
+        self.switch_ops = {"+": "-", "-": "+", "*": "/", "/": "*"}
 
     def get_tokens(self):
         self.tokens = []
@@ -20,8 +21,17 @@ class AlgebraSolver:
                 pass
             else:
                 self.this_string_to_int += char
+        if not self.this_string_to_int == "":
+            self.tokens.append(int(self.this_string_to_int))
+            self.this_string_to_int = ""
         print(self.tokens)
 
+    def get_ops(self):
+        pass
 
-algebra_solver = AlgebraSolver("3x+1=16")
+    def reverse_ops(self, ops):
+        pass
+
+
+algebra_solver = AlgebraSolver("3*x+1=16")
 algebra_solver.get_tokens()
