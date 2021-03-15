@@ -1,7 +1,8 @@
 class AlgebraSolver:
     def __init__(self, equation):
         self.equation = equation
-        self.x_val = int()
+        self.tokens = []
+        self.x_val = 0
 
     def get_tokens(self):
         pass
