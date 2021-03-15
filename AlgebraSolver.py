@@ -20,4 +20,5 @@ class AlgebraSolver:
         print(self.tokens)
 
 
-AlgebraSolver("3x+1=16")
+algebra_solver = AlgebraSolver("3x+1=16")
+algebra_solver.get_tokens()
