@@ -35,13 +35,17 @@ class AlgebraSolver:
         self.ops_order = [item[0] for item in self.prepare_ops()]
         for op in self.ops_order:
             self.x_val = eval("self.x_val" + op[0] + str(op[1]))
-        print(self.x_val)
+        print("x = %s" % self.x_val)
 
     def prepare_ops(self):
         reversed_ops = []
-        for token in range(len(self.tokens)):
-            if self.tokens[token] in self.reverse_ops_dict.keys():
-                reversed_ops.append((self.reverse_ops_dict[self.tokens.pop(token)], self.tokens.pop(token + 1)))
+        for token in self.tokens:
+            token_ = self.tokens.index(token)
+            if self.tokens[token_] in self.reverse_ops_dict.keys():
+                if isinstance(self.tokens[token_ - 1], float):
+                    reversed_ops.append((self.reverse_ops_dict[self.tokens[token_]], self.tokens[token_ - 1]))
+                else:
+                    reversed_ops.append((self.reverse_ops_dict[self.tokens[token_]], self.tokens[token_ + 1]))
         return list(sorted(zip(reversed_ops, [self.sort_key[i] for i in [i[0] for i in reversed_ops]]),
                            key=lambda item: item[0]))
 
